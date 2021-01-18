@@ -7,13 +7,17 @@
         <script defer src="{{ url_for('static', filename='socket.js') }}"></script>
     </head>
     <body>
-        <div id="open-server">
+        <div id="open-server" class="container">
             <h1>Server is open</h1>
             <div id="msg-dialog">
             </div>
+            <form id="send-dialog">
+                <input name="command" autocomplete="off" type="text" id="command" />
+                <input type="submit" />
+            </form>
         </div>
         
-        <div id="closed-server">
+        <div id="closed-server" class="container">
             <h2>Server is closed</h2>
             <button id="open-button">Open server</button>
         </div>

@@ -21,14 +21,19 @@ def handle_status_request():
 @socketio.on("open_request")
 def handle_open():
     print("\nOpen server request received\n")
-    if not status.is_open():
+    if not serverHandler.is_open():
         serverHandler.start_server()
         emit_status()
 
 @socketio.on("shutdown_request")
 def handle_shutdown():
-    if status.is_open():
+    if serverHandler.is_open():
         serverHandler.shut_down()
+
+@socketio.on("client_send_command")
+def handle_command(cmd):
+    if serverHandler.is_open():
+        serverHandler.input_command(cmd)
 
 def send_console(message):
     socketio.emit("mc_console_msg", { "msg": message })

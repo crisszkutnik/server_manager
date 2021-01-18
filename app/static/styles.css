@@ -8,3 +8,7 @@ h1 {
     height: 800px;
     overflow: scroll;
 }
+
+.container {
+    flex-direction: column;
+}

@@ -35,7 +35,8 @@ document.querySelector("button#open-button").addEventListener("click", activateS
 */
 
 let msg_dialog = document.querySelector("#msg-dialog");
-let send_dialog;
+let send_dialog = document.querySelector("#send-dialog");
+let cmd = document.querySelector("#command");
 
 socket.on("connect", () => {
     console.log("Connected")
@@ -43,4 +44,11 @@ socket.on("connect", () => {
 
 socket.on("mc_console_msg", ({ msg }) => {
     msg_dialog.innerHTML += `<p>${ msg }</p>`;
+})
+
+send_dialog.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let parsed_cmd = cmd.value + "\n";
+    cmd.value = "";
+    socket.emit("client_send_command", parsed_cmd);
 })

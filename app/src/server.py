@@ -15,7 +15,7 @@ class ServerHandler():
         self.thread.start()
 
     def set_up_server(self):
-        if is_open():
+        if self.is_open():
             raise Exception("Server already running or port is busy")
         
         os.chdir("mc_server")
@@ -23,12 +23,10 @@ class ServerHandler():
         os.chdir("../")
 
     def is_open(self):
-        print(self.process)
         if self.process is None:
             return False
         else:
             return not (self.process.poll() == 0)
-        # if self.process.poll() == 0 it means it has ended
 
     def shut_down(self):
         self.input_command("stop\n")
