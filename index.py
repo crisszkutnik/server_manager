@@ -6,10 +6,7 @@ app = start_app()
 
 @app.route("/")
 def index():
-    if status.is_open():
-        return render_template("open.html")
-    else:
-        return render_template("closed.html")
+    return render_template("page.html", open=status.is_open())
 
 if __name__ == "__main__":
     socketio.run(app)

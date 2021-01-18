@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minecraft server</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js" crossorigin="anonymous"></script>
+        <script defer src="{{ url_for('static', filename='socket.js') }}"></script>
+    </head>
+    <body>
+        <div id="open-server">
+            <h1>Server is open</h1>
+            <div id="msg-dialog">
+            </div>
+        </div>
+        
+        <div id="closed-server">
+            <h2>Server is closed</h2>
+            <button id="open-button">Open server</button>
+        </div>
+    </body>
+</html>
