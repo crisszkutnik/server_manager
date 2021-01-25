@@ -1,6 +1,6 @@
 #from eventlet import monkey_patch
-#:monkey_patch()
-from eventlet import monkey
+#monkey_patch()
+from gevent import monkey
 monkey.patch_all()
 
 
